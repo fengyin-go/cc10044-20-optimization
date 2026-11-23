@@ -1,6 +1,7 @@
-"""业务路由汇总：所有模块共用一套资源路由，由领域服务完成分派。"""
+"""业务路由汇总：领域操作路由固定在通用资源路由之前注册，
+避免固定路径被 ``/{module}/{entry_id}`` 动态段抢占。"""
 from __future__ import annotations
 
-from app.routers import resource
+from app.routers import domain, resource
 
-ROUTERS = [resource]
+ROUTERS = [domain, resource]
